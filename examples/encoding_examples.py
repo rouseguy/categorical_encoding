@@ -1,12 +1,14 @@
 import time
+import gc
+
 import pandas as pd
 import numpy as np
-import gc
-from sklearn import cross_validation, naive_bayes, metrics, linear_model
-from sklearn.pipeline import Pipeline
+from sklearn import cross_validation, linear_model
+
 import matplotlib.pyplot as plt
 import category_encoders
-from source_data.loaders import get_cars_data, get_mushroom_data, get_splice_data
+from examples.source_data.loaders import get_mushroom_data, get_cars_data, get_splice_data
+
 plt.style.use('ggplot')
 
 __author__ = 'willmcginnis'
@@ -46,7 +48,6 @@ def main(loader, name):
 
     # first get the dataset
     X, y, mapping = loader()
-    X = category_encoders.ordinal_encoding(X)
 
     clf = linear_model.LogisticRegression()
 
@@ -94,8 +95,8 @@ if __name__ == '__main__':
     out, raw = main(get_mushroom_data, 'Mushroom')
     print(out.sort_values(by=['Dataset', 'Avg. Score']))
 
-    # out, raw = main(get_cars_data, 'Cars')
-    # print(out.sort_values(by=['Dataset', 'Avg. Score']))
-    #
-    # out, raw = main(get_splice_data, 'Splice')
-    # print(out.sort_values(by=['Dataset', 'Avg. Score']))
+    out, raw = main(get_cars_data, 'Cars')
+    print(out.sort_values(by=['Dataset', 'Avg. Score']))
+
+    out, raw = main(get_splice_data, 'Splice')
+    print(out.sort_values(by=['Dataset', 'Avg. Score']))

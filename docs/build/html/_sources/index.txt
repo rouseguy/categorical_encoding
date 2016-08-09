@@ -6,30 +6,21 @@
 Category Encoders
 =================
 
-A set of example problems examining different encoding methods for categorical variables for the purpose of
-classification. Optionally, install the library of encoders as a package and use them in your projects directly.  They
-are all available as methods or as scikit-learn compatible transformers.
-
-Encoding Methods
-----------------
-
- * Ordinal
- * One-Hot
- * Binary
- * Helmert Contrast
- * Sum Contrast
- * Polynomial Contrast
- * Backward Difference Contrast
- * Simple Hashing
+A set of scikit-learn-style transformers for encoding categorical variables into numeric by means of different
+techniques.
 
 Usage
 -----
 
 Either run the examples in encoding_examples.py, or install as:
 
+.. code-block:: python
+
     pip install category_encoders
 
 To use:
+
+.. code-block:: python
 
     import category_encoders as ce
 
@@ -43,14 +34,21 @@ To use:
     encoder = ce.PolynomialEncoder(cols=[...])
 
 All of these are fully compatible sklearn transformers, so they can be used in pipelines or in your existing scripts. If
-the cols parameter isn't passed, every column will be encoded, so be careful with that.
+the cols parameter isn't passed, every column will be encoded, so be careful with that. See below for detailed documentation
 
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
-   encoders
+   backward_difference
+   binary
+   hashing
+   helmert
+   onehot
+   ordinal
+   polynomial
+   sum
 
 
 Indices and tables
